@@ -1,0 +1,104 @@
+:root {
+  --mainTextColor: black;
+  --buttonTextColor: white;
+  --buttonFeatureColor: purple;
+  --hoverColor: magenta;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: var(--mainTextColor);
+}
+
+.top-left {
+    float: left;
+}
+
+.top-right {
+    float: right;
+}
+
+#main-challenge {
+    margin-top: 60px;
+}
+
+.container {
+    margin: 0 auto;
+    width: 1200px;
+    font-family: sans-serif;
+}
+
+/* HEADER START */
+
+#header {
+    width: 100%;
+    height: 50px;
+}
+
+.view-hs, 
+.timer {
+    line-height: 40px;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#header .view-hs a,
+#header .timer  {
+    color: var(--buttonFeatureColor);
+}
+
+/* HEADER END */
+
+#quiz-intro {
+    margin-top: 120px;
+}
+
+.quiz-start {
+   text-align: center; 
+}
+
+.quiz-start h1 {
+    font-size: 55px;
+    margin-bottom: 30px;
+}
+
+.quiz-start p {
+    font-size: 22px;
+    font-weight: lighter;
+    margin-bottom: 10px;
+}
+
+.quiz-start button {
+    margin-top: 15px;
+    border-radius: 10px;
+    font-size: 25px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--buttonFeatureColor);
+    color: var(--buttonTextColor);
+    text-decoration: none;
+    width: 155px;
+    height: 50px;
+    cursor: pointer;
+    
+}
+
+.quiz-start button:hover {
+    margin-top: 15px;
+    border-radius: 10px;
+    font-size: 25px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--hoverColor);
+    color: var(--buttonTextColor);
+    text-decoration: none;
+    width: 155px;
+    height: 50px;
+    cursor: pointer;
+    
+}
