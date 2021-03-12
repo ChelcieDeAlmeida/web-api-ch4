@@ -3,6 +3,7 @@
   --buttonTextColor: white;
   --buttonFeatureColor: purple;
   --hoverColor: magenta;
+  --AnswerColor: rgba(118, 111, 111, 0.974);
 }
 
 * {
@@ -60,6 +61,7 @@ a {
 /* INTRO SCREEN START */
 #quiz-main {
     margin-top: 120px;
+    /* UNCOMMENT THIS */
     display: none;
 }
 
@@ -113,6 +115,7 @@ a {
     margin-top: 120px;
     margin-left: 50px;
     margin-right: 50px;
+    display: none;
 }
 
 .quiz-qset .question-choice {
@@ -148,3 +151,98 @@ a {
     width: 250px;
     line-height: 25px;  
 }
+
+/* QUESTIONNAIRE ENDS */
+
+/* QUIZ SUBMISSION STARTS */
+
+#quiz-submission {
+    margin-top: 120px;
+    margin-left: 50px;
+    margin-right: 50px;
+    display:none;
+}
+
+.quiz-sub h1 {
+    font-weight: bold;
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+.quiz-sub p {
+    padding-left: 8px;
+    padding-bottom: 20px;
+    font-size: 30px;
+}
+
+.quiz-sub input {
+    margin-left: 15px;
+    margin-top: 5px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.quiz-sub .submit-btn {
+    margin-left: 15px;
+    margin-top: 5px;
+    height: 30px;
+    border-radius: 5px;
+    width: 150px; 
+    background-color: var(--buttonFeatureColor);
+    color: var(--buttonTextColor);
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.quiz-sub .submit-btn:hover {
+    margin-left: 15px;
+    margin-top: 5px;
+    height: 30px;
+    border-radius: 5px;
+    width: 150px; 
+    background-color: var(--hoverColor);
+    color: var(--buttonTextColor);
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.quiz-sub .oneMore-btn {
+    margin-left: 15px;
+    margin-top: 5px;
+    margin-right: 200px;
+    height: 30px;
+    border-radius: 5px;
+    width: 200px; 
+    background-color: var(--hoverColor);
+    color: var(--buttonFeatureColor);
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.quiz-sub .oneMore-btn:hover {
+    margin-left: 15px;
+    margin-top: 5px;
+    margin-right: 200px;
+    height: 30px;
+    border-radius: 5px;
+    width: 200px; 
+    background-color: var(--hoverColor);
+    color: var(--buttonTextColor);
+    font-size: 22px;
+    cursor: pointer;
+}
+
+/* QUIZ SUBMISSION ENDS */
+
+/* ANSWERS STARTS */
+
+#answers i {
+    border-top:10px solid var(--mainTextColor);
+    border-top-width: 1px;
+    margin-top: 10px;
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--AnswerColor);
+    letter-spacing: 5px;
+}
+
+/* ANSWERS ENDS */
