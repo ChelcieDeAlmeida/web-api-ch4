@@ -36,12 +36,12 @@
         <section id="quiz-questions">
             <div class="container">
                 <article class="quiz-qset" id="quiz-qset">
-                    <h2 class="question-choice">If HTML is for structure, and CSS is for style. What is JS for?</h2>
+                    <h2 id="question-choice">1. If HTML is for structure, and CSS is for style. What is JS for?</h2>
                     <ul>
-                        <li>Nothing, Python rules</li>
-                        <li>Function and dynamics</li>
-                        <li>It rules CSS and HTML</li>
-                        <li>it's a browser database</li>
+                        <li><button id="choiceButton1" data-value="1" class="choiceButton"></button></li>
+                        <li><button id="choiceButton2" data-value="2" class="choiceButton"></button></li>
+                        <li><button id="choiceButton3" data-value="3" class="choiceButton"></button></li>
+                        <li><button id="choiceButton4" data-value="4" class="choiceButton"></button></li>
                     </ul>
                 </article>
             </div>
@@ -58,12 +58,26 @@
                     <button type="button" class="top-right oneMore-btn">One More Time!</button>
                 </article>
             </div>
+            <div id="answers">
+                <div class="container">
+                    <i id="correct">Correct!</i>
+                    <i id="incorrect">Incorrect!</i>
+                </div>
+            </div>
         </section>
         <!-- Answer Check -->
-        <section id="answers">
+      
+        <!-- High Score page-->
+        <section id="high-scores">
             <div class="container">
-                <i id="correct">Correct!</i>
-                <i id="incorrect">Incorrect!</i>
+                <article class="high-score-board">
+                    <h2>High Scores</h2>
+                    <ul id="high-score-list">
+
+                    </ul>
+                    <button type="button" id="go-back">Go Back</button>
+                    <button type="button" id="clear">Clear</button>
+                </article>
             </div>
         </section>
         

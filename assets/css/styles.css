@@ -62,7 +62,7 @@ a {
 #quiz-main {
     margin-top: 120px;
     /* UNCOMMENT THIS */
-    display: none;
+    /* display: none; */
 }
 
 .quiz-start {
@@ -115,10 +115,10 @@ a {
     margin-top: 120px;
     margin-left: 50px;
     margin-right: 50px;
-    display: none;
+    /* display: none; */
 }
 
-.quiz-qset .question-choice {
+.quiz-qset #question-choice {
     text-align: center;
     font-family: inherit;
     font-size: 30px;
@@ -160,7 +160,7 @@ a {
     margin-top: 120px;
     margin-left: 50px;
     margin-right: 50px;
-    display:none;
+    /* display:none; */
 }
 
 .quiz-sub h1 {
@@ -238,11 +238,14 @@ a {
 #answers i {
     border-top:10px solid var(--mainTextColor);
     border-top-width: 1px;
-    margin-top: 10px;
+    margin-top: 50px;
     font-size: 30px;
     font-weight: bold;
     color: var(--AnswerColor);
     letter-spacing: 5px;
+    /* display:none; */
 }
 
 /* ANSWERS ENDS */
+
+
