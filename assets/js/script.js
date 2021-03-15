@@ -49,8 +49,7 @@ var quizStart = function() {
     choiceButton4.innerText=qsetArray[initialQuestion].opt4;
 };
 
-
-
+// adding event listener to ensure question change occurs when 
     for (i = 0; i < choiceButtons.length; i++) {
         console.log('Hello')
     };
