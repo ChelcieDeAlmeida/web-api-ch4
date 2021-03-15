@@ -118,7 +118,7 @@ a {
 }
 
 .quiz-qset #question-choice {
-    text-align: center;
+    text-align: left;
     font-family: inherit;
     font-size: 30px;
 }
