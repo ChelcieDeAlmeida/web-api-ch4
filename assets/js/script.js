@@ -11,7 +11,9 @@ var choiceButton4 = document.getElementById('choiceButton4');
 var choiceButtons = document.getElementsByClassName('choiceButton');
 var correctEl = document.getElementById('correct');
 var incorrectEl = document.getElementById('incorrect');
+var timerCountDown = document.getElementById('timer-value');
 var initialQuestion = 0;
+var score = 0;
 
 quizQuestionsEl.style.display = 'none';
 quizSubmissionEl.style.display = 'none';
@@ -29,20 +31,67 @@ var qsetArray = [
         corAns: '2'
     },
     {
-        question: '2. Who is Bane?',
-        opt1: 'Nothing, Python rules',
-        opt2: 'Function and dynamics',
-        opt3: 'It rules CSS and HTML',
-        opt4: "'it's a browser database'",
+        question: '2. Variables declared globally can only be used ____',
+        opt1: 'inside a function',
+        opt2: 'outside a function',
+        opt3: '1 & 2',
+        opt4: 'once in a function',
         corAns: '3'
+    },
+    {
+        question: '3. Select the suitable variable assignment',
+        opt1: 'GASGas = 23',
+        opt2: 'gas123 = 23',
+        opt3: 'var gas = 23',
+        opt4: 'gas-123 = 23',
+        corAns: '3'
+    },
+    {
+        question: '4. Which property gives you the length of a string?',
+        opt1: 'length',
+        opt2: 'len',
+        opt3: 'ln',
+        opt4: 'none of these work',
+        corAns: '1'
     }
 ];
+
+
+
+// setting the timer countdown
+var timer;
+var intervalID;
+
+function resetTimer() {
+    timer = 15 * qsetArray.length;
+    timerCountDown.textContent = timer;
+
+    clearInterval(intervalID);
+    intervalID = setInterval(function () {
+        timer--;
+        timerCountDown.textContent = timer;
+        
+        if (timer <= 0) {
+            timer = 0;
+            clearInterval(intervalID);
+            alert('Time Out!');
+            quizSubmissionEl.style.display = 'block'; //remove?
+            quizQuestionsEl.style.display = 'none'; //remove?
+        }
+        // submit page shows up, clear the interval
+        // if (quizSubmissionEl.style.display === 'block') {
+        //     timerCountDown.textContent = "0";
+        //     clearInterval(intervalID);
+        // }
+    }, 1000);
+}
 
 startQuizbtn.addEventListener('click',function(){
     quizQuestionsEl.style.display = 'block';
     quizMainEl.style.display = 'none';
     startQuizbtn.style.display = 'none';
     quizStart();
+    resetTimer();
 })
 
 var quizStart = function() {
@@ -63,8 +112,7 @@ var quizStart = function() {
         var chosenAnswer = clickedButton.getAttribute('data-value');
         var correctAnswer = qsetArray[initialQuestion].corAns;
         var wereTheyCorrect = chosenAnswer == correctAnswer;
-        // console.log(wereTheyCorrect);
-        
+
         // I want to verify if the chosen answer is equal to the correct answer.
         // if so, we want to display correct. Else, we want to display incorrect
 
@@ -76,16 +124,27 @@ var quizStart = function() {
             incorrectEl.style.display = 'block'; 
         }
         
+        // this function is timing the answer evaluations
         setTimeout(function() {
-
             correctEl.style.display = 'none'
             incorrectEl.style.display = 'none'
             initialQuestion +=1   
-            quizStart();    
+            quizStart(); 
         }, 1000);
-        // initialQuestion +=1   
-        // quizStart();
-
+   
         })
+        
     };
 
+    
+  //getting the qset to end and change to initials section
+        // if (initialQuestion >= qsetArray[-1]) {
+        //     correctEl.style.display = 'none'
+        //     incorrectEl.style.display = 'none'
+        //     quizQuestionsEl.style.display = 'none';
+        //     quizSubmissionEl.style.display = 'block';
+        // } else {
+
+        //     quizStart() 
+        // }
+        //qset ends and change to intials
