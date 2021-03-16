@@ -12,6 +12,10 @@ var choiceButtons = document.getElementsByClassName('choiceButton');
 var correctEl = document.getElementById('correct');
 var incorrectEl = document.getElementById('incorrect');
 var timerCountDown = document.getElementById('timer-value');
+var submitButton = document.getElementsByClassName('submit-btn');
+var oneMoretimeButton = document.getElementsByClassName('oneMore-btn');
+var userScore = document.getElementById('score');
+
 var initialQuestion = 0;
 var score = 0;
 
@@ -56,9 +60,8 @@ var qsetArray = [
     }
 ];
 
-
-
 // setting the timer countdown
+// when timer ends or when user completes the quiz, user should be prompted to the submission page
 var timer;
 var intervalID;
 
@@ -70,21 +73,32 @@ function resetTimer() {
     intervalID = setInterval(function () {
         timer--;
         timerCountDown.textContent = timer;
+        var done = false;
         
-        if (timer <= 0) {
+        if (timer <= 0) { 
             timer = 0;
             clearInterval(intervalID);
+            timerCountDown.textContent = "0";
             alert('Time Out!');
-            quizSubmissionEl.style.display = 'block'; //remove?
-            quizQuestionsEl.style.display = 'none'; //remove?
+            done = true;
         }
         // submit page shows up, clear the interval
-        // if (quizSubmissionEl.style.display === 'block') {
-        //     timerCountDown.textContent = "0";
-        //     clearInterval(intervalID);
-        // }
+        if (initialQuestion >= qsetArray.length) {
+            timerCountDown.textContent = "0";
+            clearInterval(intervalID);
+            done = true;
+        }
+
+        if (done) {
+            quizSubmissionEl.style.display = 'block'; 
+            quizQuestionsEl.style.display = 'none'; 
+
+        }
+
     }, 1000);
 }
+
+// QUIZ STARTS //
 
 startQuizbtn.addEventListener('click',function(){
     quizQuestionsEl.style.display = 'block';
@@ -119,9 +133,12 @@ var quizStart = function() {
         if (chosenAnswer == correctAnswer) {
 
            correctEl.style.display = 'block';
+           score+=25;
+           userScore.textContent = score;
         }
         else {
             incorrectEl.style.display = 'block'; 
+            timer-=15;
         }
         
         // this function is timing the answer evaluations
@@ -135,16 +152,3 @@ var quizStart = function() {
         })
         
     };
-
-    
-  //getting the qset to end and change to initials section
-        // if (initialQuestion >= qsetArray[-1]) {
-        //     correctEl.style.display = 'none'
-        //     incorrectEl.style.display = 'none'
-        //     quizQuestionsEl.style.display = 'none';
-        //     quizSubmissionEl.style.display = 'block';
-        // } else {
-
-        //     quizStart() 
-        // }
-        //qset ends and change to intials
