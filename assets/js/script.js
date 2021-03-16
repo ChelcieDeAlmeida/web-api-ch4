@@ -12,20 +12,21 @@ var correctEl = document.getElementById('correct');
 var incorrectEl = document.getElementById('incorrect');
 var timerCountDown = document.getElementById('timer-value');
 var submitButton = document.getElementById('submit-btn');
-var oneMoretimeButton = document.getElementById('oneMore-btn');
+var oneMoreBtn = document.getElementById('oneMoreBtn');
 var inputNameEl = document.getElementById('input-name');
 var userScore = document.getElementById('score');
 var highScoresEl = document.getElementById('high-scores');
 var viewHighScoresHeaderEl = document.getElementById('view-hs');
 var highScoreListEl = document.getElementById('high-score-list');
-
+var clearButton = document.getElementById('clear');
+var goBackButton = document.getElementById('go-back');
 var initialQuestion = 0;
 var score = 0;
 
 
 quizQuestionsEl.style.display = 'none';
 quizSubmissionEl.style.display = 'none';
-highScoresEl.style.display = 'none';
+highScoresEl.style.display = 'none'; //change to none
 correctEl.style.display = 'none';
 incorrectEl.style.display = 'none';
 
@@ -64,7 +65,7 @@ var qsetArray = [
     }
 ];
 
-// setting the timer countdown
+// Setting the timer countdown
 // when timer ends or when user completes the quiz, user should be prompted to the submission page
 var timer;
 var intervalID;
@@ -160,36 +161,27 @@ for (i = 0; i < choiceButtons.length; i++) {
 // SUBMISSION & SUBMIT BUTTON ACTION
 
 submitButton.addEventListener('click', function submitclick(event) {
-    // getting the name & score value
-    // var userInitials = inputNameEl.value;
-    // var finalScore = { userInitials, score }
-  
+
     const key = inputNameEl.value;
     const value = score;
-
-    // console.log(key);
-    // console.log(value);
 
     if (key && value) {
         localStorage.setItem(key, value)  
     }
-
+    
+    // Logic loops through local storage and saves newly entered scores
+    // to the score board
     for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
         const value = localStorage.getItem(key);
-        // highScoreListEl ul
         highScoreListEl.innerHTML += `${key}: ${value}<br />`;
-    
     }
 })
 
-
-
-
-// ONE MORE TIME BUTTON ACTION
-
-// location.reload(); can use for OneMoreTime. this refreshes and send user back to beginning
-
+// 'ONE MORE TIME' BUTTON ACTION
+oneMoreBtn.onclick = function () {
+    location.reload(); // Reload method is equivalent to the refresh button on the browser
+};
 
 // VIEW HIGHSCORE
 viewHighScoresHeaderEl.addEventListener('click', function viewScoresHead(event) {
@@ -198,4 +190,22 @@ viewHighScoresHeaderEl.addEventListener('click', function viewScoresHead(event) 
     highScoresEl.style.display = 'block';
 })
 
+// 'CLEAR' BUTTON ACTION
 
+clearButton.onclick = function () {
+    localStorage.clear();
+    quizSubmissionEl.style.display = 'none';
+    quizQuestionsEl.style.display = 'none';
+    quizMainEl.style.display = 'none';
+    highScoresEl.style.display = 'block';
+    
+    //scoreRender();
+}
+
+// 'GO BACK' BUTTON ACTION
+goBackButton.onclick = function () {
+    quizSubmissionEl.style.display = 'block';
+    quizQuestionsEl.style.display = 'none';
+    highScoresEl.style.display = 'none';
+    quizMainEl.style.display = 'none';
+}

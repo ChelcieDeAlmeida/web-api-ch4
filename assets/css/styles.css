@@ -165,7 +165,6 @@ a {
     margin-top: 120px;
     margin-left: 50px;
     margin-right: 50px;
-    /* display:none; */
 }
 
 .quiz-sub h1 {
@@ -186,7 +185,7 @@ a {
     border-radius: 5px;
 }
 
-.quiz-sub .submit-btn {
+.quiz-sub .submit-btn, #clear, #go-back {
     margin-left: 15px;
     margin-top: 5px;
     height: 30px;
@@ -198,7 +197,7 @@ a {
     cursor: pointer;
 }
 
-.quiz-sub .submit-btn:hover {
+.quiz-sub .submit-btn, #clear, #go-back:hover {
     margin-left: 15px;
     margin-top: 5px;
     height: 30px;
@@ -210,7 +209,7 @@ a {
     cursor: pointer;
 }
 
-.quiz-sub .oneMore-btn {
+.quiz-sub .oneMoreBtn {
     margin-left: 15px;
     margin-top: 5px;
     margin-right: 200px;
@@ -223,7 +222,7 @@ a {
     cursor: pointer;
 }
 
-.quiz-sub .oneMore-btn:hover {
+.quiz-sub .oneMoreBtn:hover {
     margin-left: 15px;
     margin-top: 5px;
     margin-right: 200px;
@@ -237,6 +236,35 @@ a {
 }
 
 /* QUIZ SUBMISSION ENDS */
+
+
+/* HIGH SCORE BOARD STARTS */
+/* BUTTONS SHARE THE SAME PROPERTIES AS OTHER BUTTONS */ 
+
+#high-scores {
+    margin-top: 50px;
+  }
+
+
+.high-score-board h2 {
+    font-style: inherit;
+    color: var(--buttonFeatureColor);
+    padding-bottom: 60px;
+}
+
+
+.high-score-board ul li {
+    width: 40%;
+    height: 40px;
+    line-height: 40px;
+    margin: 5px 0;
+    padding-left: 10px;
+  }
+
+.high-score-board ul li:nth-child(2n-1) {
+    background-color: var(--buttonFeatureColor);
+}
+
 
 /* ANSWERS STARTS */
 
@@ -252,5 +280,6 @@ a {
 }
 
 /* ANSWERS ENDS */
+
 
 
