@@ -1,7 +1,6 @@
 var quizMainEl = document.getElementById('quiz-main');
 var quizQuestionsEl = document.getElementById('quiz-questions');
 var quizSubmissionEl = document.getElementById('quiz-submission');
-var highScoresEl = document.getElementById('high-scores');
 var startQuizbtn = document.getElementById('start-quiz');
 var questionChoice = document.getElementById('question-choice');
 var choiceButton1 = document.getElementById('choiceButton1');
@@ -12,12 +11,17 @@ var choiceButtons = document.getElementsByClassName('choiceButton');
 var correctEl = document.getElementById('correct');
 var incorrectEl = document.getElementById('incorrect');
 var timerCountDown = document.getElementById('timer-value');
-var submitButton = document.getElementsByClassName('submit-btn');
-var oneMoretimeButton = document.getElementsByClassName('oneMore-btn');
+var submitButton = document.getElementById('submit-btn');
+var oneMoretimeButton = document.getElementById('oneMore-btn');
+var inputNameEl = document.getElementById('input-name');
 var userScore = document.getElementById('score');
+var highScoresEl = document.getElementById('high-scores');
+var viewHighScoresHeaderEl = document.getElementById('view-hs');
+var highScoreListEl = document.getElementById('high-score-list');
 
 var initialQuestion = 0;
 var score = 0;
+
 
 quizQuestionsEl.style.display = 'none';
 quizSubmissionEl.style.display = 'none';
@@ -74,8 +78,8 @@ function resetTimer() {
         timer--;
         timerCountDown.textContent = timer;
         var done = false;
-        
-        if (timer <= 0) { 
+
+        if (timer <= 0) {
             timer = 0;
             clearInterval(intervalID);
             timerCountDown.textContent = "0";
@@ -90,8 +94,8 @@ function resetTimer() {
         }
 
         if (done) {
-            quizSubmissionEl.style.display = 'block'; 
-            quizQuestionsEl.style.display = 'none'; 
+            quizSubmissionEl.style.display = 'block';
+            quizQuestionsEl.style.display = 'none';
 
         }
 
@@ -100,7 +104,7 @@ function resetTimer() {
 
 // QUIZ STARTS //
 
-startQuizbtn.addEventListener('click',function(){
+startQuizbtn.addEventListener('click', function () {
     quizQuestionsEl.style.display = 'block';
     quizMainEl.style.display = 'none';
     startQuizbtn.style.display = 'none';
@@ -108,19 +112,19 @@ startQuizbtn.addEventListener('click',function(){
     resetTimer();
 })
 
-var quizStart = function() {
-    questionChoice.innerText=qsetArray[initialQuestion].question;
-    choiceButton1.innerText=qsetArray[initialQuestion].opt1;
-    choiceButton2.innerText=qsetArray[initialQuestion].opt2;
-    choiceButton3.innerText=qsetArray[initialQuestion].opt3;
-    choiceButton4.innerText=qsetArray[initialQuestion].opt4;
+var quizStart = function () {
+    questionChoice.innerText = qsetArray[initialQuestion].question;
+    choiceButton1.innerText = qsetArray[initialQuestion].opt1;
+    choiceButton2.innerText = qsetArray[initialQuestion].opt2;
+    choiceButton3.innerText = qsetArray[initialQuestion].opt3;
+    choiceButton4.innerText = qsetArray[initialQuestion].opt4;
 };
 
 // adding event listener to ensure question change occurs when the user clicks on an option
 
-    for (i = 0; i < choiceButtons.length; i++) {
-        var choiceButton = choiceButtons[i]
-        choiceButton.addEventListener('click',function handleclick(event) {
+for (i = 0; i < choiceButtons.length; i++) {
+    var choiceButton = choiceButtons[i]
+    choiceButton.addEventListener('click', function handleclick(event) {
         // the choice is evaluated for correctness
         var clickedButton = event.target
         var chosenAnswer = clickedButton.getAttribute('data-value');
@@ -132,23 +136,66 @@ var quizStart = function() {
 
         if (chosenAnswer == correctAnswer) {
 
-           correctEl.style.display = 'block';
-           score+=25;
-           userScore.textContent = score;
+            correctEl.style.display = 'block';
+            score += 25;
+            userScore.textContent = score;
         }
         else {
-            incorrectEl.style.display = 'block'; 
-            timer-=15;
+            incorrectEl.style.display = 'block';
+            timer -= 15;
         }
-        
+
         // this function is timing the answer evaluations
-        setTimeout(function() {
+        setTimeout(function () {
             correctEl.style.display = 'none'
             incorrectEl.style.display = 'none'
-            initialQuestion +=1   
-            quizStart(); 
+            initialQuestion += 1
+            quizStart();
         }, 1000);
-   
-        })
-        
-    };
+
+    })
+
+};
+
+// SUBMISSION & SUBMIT BUTTON ACTION
+
+submitButton.addEventListener('click', function submitclick(event) {
+    // getting the name & score value
+    // var userInitials = inputNameEl.value;
+    // var finalScore = { userInitials, score }
+  
+    const key = inputNameEl.value;
+    const value = score;
+
+    // console.log(key);
+    // console.log(value);
+
+    if (key && value) {
+        localStorage.setItem(key, value)  
+    }
+
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        const value = localStorage.getItem(key);
+        // highScoreListEl ul
+        highScoreListEl.innerHTML += `${key}: ${value}<br />`;
+    
+    }
+})
+
+
+
+
+// ONE MORE TIME BUTTON ACTION
+
+// location.reload(); can use for OneMoreTime. this refreshes and send user back to beginning
+
+
+// VIEW HIGHSCORE
+viewHighScoresHeaderEl.addEventListener('click', function viewScoresHead(event) {
+    quizSubmissionEl.style.display = 'none';
+    quizQuestionsEl.style.display = 'none';
+    highScoresEl.style.display = 'block';
+})
+
+
