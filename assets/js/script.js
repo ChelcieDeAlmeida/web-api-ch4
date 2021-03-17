@@ -198,8 +198,6 @@ clearButton.onclick = function () {
     quizQuestionsEl.style.display = 'none';
     quizMainEl.style.display = 'none';
     highScoresEl.style.display = 'block';
-    
-    //scoreRender();
 }
 
 // 'GO BACK' BUTTON ACTION
